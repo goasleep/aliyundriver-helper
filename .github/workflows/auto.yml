@@ -5,8 +5,6 @@ on:
     - cron: "30 22 * * *" # 北京时间上午06:30
   workflow_dispatch:
 
-env:
-  PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
 
 jobs:
   CheckIn:
@@ -21,7 +19,7 @@ jobs:
           pip install -r requirements.txt
       - name: Run Python script
         env:
-          refresh_token_list: ${{ secrets.refresh_token_list }}  
-          pushplus_token: ${{ secrets.pushplus_token }} 
+          REFRESH_TOKEN_LIST: ${{ secrets.REFRESH_TOKEN_LIST }}  
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }} 
         run: |
           python checkin.py
