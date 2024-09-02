@@ -75,7 +75,7 @@ class AliYun:
             if not access_token:
                 return [{"name": "阿里云盘", "value": "token 过期"}]
             msg = self.sign(access_token)
-            msg = f"第{index}帐号:" + "\n".join(
+            msg = f"第{index + 1}帐号:" + "\n".join(
                 [f"{one.get('name')}: {one.get('value')}" for one in msg]
             )
             msgs.append(msg)
