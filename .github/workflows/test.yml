@@ -16,6 +16,6 @@ jobs:
           python-version: '3.11'
       - name: Run Python script
         env:
-          LIST_ENV: ${{ secrets.LIST_ENV }}  
+          LIST_ENV: ${{ fromJSON(secrets.LIST_ENV) }}  
         run: |
           python test.py
