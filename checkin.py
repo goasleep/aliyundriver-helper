@@ -88,10 +88,10 @@ if __name__ == "__main__":
     import os
 
     # 从环境变量中读取列表
-    refresh_token_list = os.getenv('REFRESH_TOKEN_LIST', [])  # 默认为空列表
-    pushplus_token = os.getenv('PUSHPLUS_TOKEN')  
+    refresh_token_list = os.getenv('REFRESH_TOKEN_LIST', "")  # 默认为空列表
+    pushplus_token = os.getenv('PUSHPLUS_TOKEN')
     _check_item = {
-        "refresh_token": refresh_token_list,
+        "refresh_token": refresh_token_list.split(","),
         "pushplus_token": pushplus_token,
     }
     print(AliYun(check_item=_check_item).main())
