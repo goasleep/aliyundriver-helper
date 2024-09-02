@@ -1,0 +1,29 @@
+name: Auto
+
+on:
+  schedule:
+    - cron: "30 22 * * *" # 北京时间上午06:30
+  workflow_dispatch:
+
+env:
+  PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+
+jobs:
+  CheckIn:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses:  actions/setup-python@v4
+        with:
+        python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          - name: Run Python script
+      - name: Run Python script
+        env:
+          refresh_token_list: ${{ secrets.refresh_token_list }}  
+          pushplus_token: ${{ secrets.pushplus_token }} 
+        run: |
+          python checkin.py
