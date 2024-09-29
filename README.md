@@ -1,7 +1,15 @@
 # 使用手册
+## 获取fresh_token的方式
+打开阿里云盘登录后 在console中输入
+
+``` 
+copy(JSON.parse(localStorage.token).refresh_token); console.log(JSON.parse(localStorage.token).refresh_token);
+```
+
 ## 环境变量说明
 - REFRESH_TOKEN_LIST：为 阿里云盘的刷新token，多个帐号使用，进行分割
 - PUSHPLUS_TOKEN： 为 PUSHPLUS的通知token
+  
 
 ## 本地运行
 1. 安装
