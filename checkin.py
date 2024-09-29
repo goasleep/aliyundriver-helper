@@ -56,6 +56,9 @@ class AliYun:
                         ]
 
                     return msg
+        else:
+            print("签到失败")
+            return [{"name": "阿里云盘", "value": result}]
 
     def push_to_pushplus(self, content):
         data = {
