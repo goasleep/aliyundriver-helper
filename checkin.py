@@ -76,8 +76,10 @@ class AliYun:
         for index, refresh_token in enumerate(refresh_tokens):
             access_token = self.update_token(refresh_token)
             if not access_token:
-                return [{"name": "阿里云盘", "value": "token 过期"}]
+                msg =  [{"name": "阿里云盘", "value": "token 过期"}]
+                break
             msg = self.sign(access_token)
+            
             msg = f"第{index + 1}帐号:" + "\n".join(
                 [f"{one.get('name')}: {one.get('value')}" for one in msg]
             )
@@ -91,7 +93,7 @@ if __name__ == "__main__":
     import os
 
     # 从环境变量中读取列表
-    refresh_token_list = os.getenv('REFRESH_TOKEN_LIST', "")  # 默认为空列表
+    refresh_token_list = os.getenv('REFRESH_TOKEN_LIST', "e259e9ce32224511a109317bb38c0ce8")  # 默认为空列表
     pushplus_token = os.getenv('PUSHPLUS_TOKEN')
     _check_item = {
         "refresh_token": refresh_token_list.split(","),
